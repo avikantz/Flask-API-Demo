@@ -1,6 +1,5 @@
 from app import app
-from flask import render_template, request, url_for
-from flask_api import status, exceptions
+from flask import jsonify, request
 
 import json
 import urllib2
@@ -8,19 +7,27 @@ import urllib2
 with open('app/data/people.json') as data_file:    
     data = json.load(data_file)
 
+def saveFile():
+	with open('app/data/people.json', 'w') as outfile:
+		json.dump(data, outfile)
+
 def dataFormatter(code, message, data):
-	return {
+	return jsonify({
 		'code': code,
 		'message': message,
 		'data': data
-	}
+	})
 
 @app.route('/', methods=['GET', 'POST'])
 def personList():
 	# insert
 	if request.method == 'POST':
-		person = dict(request.data.get('data', ''))
+		person = json.loads(request.form.get('data', ''))
+		# print "POST RESPONSE: ", person
+		if person is None:
+			return dataFormatter(400, "Bad request, need parameters in body", [])
 		data.append(person)
+		saveFile()
 		return dataFormatter(200, "Added successfully", data)
 	# get all
 	return dataFormatter(200, "Get successful", data)
@@ -29,7 +36,7 @@ def personList():
 def personParticular(name):
 
 	# http://localhost:5000/The%20Doctor
-	# cause I'm too lazt to edit the json for numeric keys :P
+	# cause I'm too lazy to edit the json for numeric keys :P
 
 	# put
 	if request.method == 'PUT':
@@ -39,8 +46,9 @@ def personParticular(name):
 				ptodelete = person
 		if ptodelete in data:
 			data.remove(ptodelete)
-		ptoins = dict(request.data.get('data', ''))
+		ptoins = json.loads(request.form.get('data', ''))
 		data.append(ptoins)
+		saveFile()
 		return dataFormatter(200, "Put successful", ptoins)
 
 	# delete
@@ -51,8 +59,9 @@ def personParticular(name):
 				ptodelete = person
 		if ptodelete in data:
 			data.remove(ptodelete)
+			saveFile()
 			return dataFormatter(200, "delete successful", data)
-		return dataFormatter(201, "Not found", [])
+		return dataFormatter(404, "Not found", [])
 
 	# get
 	if request.method == 'GET':
@@ -62,4 +71,4 @@ def personParticular(name):
 				psearch = person
 		if psearch in data:
 			return dataFormatter(200, "Person found", psearch)
-		return dataFormatter(201, "Not found", [])
+		return dataFormatter(404, "Not found", [])

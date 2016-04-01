@@ -1,6 +1,6 @@
-from flask_api import FlaskAPI
+from flask import Flask
 
-app = FlaskAPI(__name__)
+app = Flask(__name__)
 
 from app import reqs
 
