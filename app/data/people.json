@@ -1,0 +1,72 @@
+[
+  {
+    "name": "Bucky Barnes",
+    "location": "Washington DC",
+    "status": "available",
+    "isNew": false,
+    "isFav": false
+  },
+  {
+    "name": "Daenerys Targaryen",
+    "location": "Meereen",
+    "status": "busy",
+    "isNew": false,
+    "isFav": true
+  },
+  {
+    "name": "Frank Underwood",
+    "location": "Washington DC",
+    "status": "available",
+    "isNew": true,
+    "isFav": true
+  },
+  {
+    "name": "Hannibal Lecter",
+    "location": "Italy",
+    "status": "away",
+    "isNew": true,
+    "isFav": false
+  },
+  {
+    "name": "Jean Luc Picard",
+    "location": "NCC 1701-D Enterprise",
+    "status": "away",
+    "isNew": false,
+    "isFav": true
+  },
+  {
+    "name": "Malcolm Reynolds",
+    "location": "Serenity",
+    "status": "available",
+    "isNew": true,
+    "isFav": true
+  },
+  {
+    "name": "Rey Kenobi",
+    "location": "Jakku",
+    "status": "busy",
+    "isNew": true,
+    "isFav": false
+  },
+  {
+    "name": "Rick Grimes",
+    "location": "Alexandria",
+    "status": "away",
+    "isNew": true,
+    "isFav": false
+  },
+  {
+    "name": "Sameen Shaw",
+    "location": "Unknown",
+    "status": "busy",
+    "isNew": false,
+    "isFav": true
+  },
+  {
+    "name": "The Doctor",
+    "location": "TARDIS",
+    "status": "available",
+    "isNew": false,
+    "isFav": true
+  }
+]
