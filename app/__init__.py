@@ -1,4 +1,4 @@
-from flask.ext.api import FlaskAPI
+from flask_api import FlaskAPI
 
 app = FlaskAPI(__name__)
 

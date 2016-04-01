@@ -1,6 +1,6 @@
 from app import app
 from flask import render_template, request, url_for
-from flask.ext.api import status, exceptions
+from flask_api import status, exceptions
 
 import json
 import urllib2
